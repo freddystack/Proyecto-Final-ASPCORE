@@ -1,0 +1,33 @@
+﻿@model IEnumerable<FinalCoreAsp.Models.AutorDTO>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 class="text-center">Autores</h1>
+<hr />
+
+
+<button type="button" class="btn btn-light mb-4"><a asp-action="Create">Registrar nuevo autor</a></button>
+
+<div class="container-fluid mb-5">
+    <div class="row col-12">
+
+        @foreach (var item in Model)
+        {
+
+            <div class="card m-2" style="width: 18rem;">
+                <img src="@Html.DisplayFor(modelItem => item.Image)" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">  @Html.DisplayFor(modelItem => item.Name)</h5>
+                    <p class="card-text">@Html.DisplayFor(modelItem => item.Description)</p>
+
+                    <a class="btn btn-primary" asp-action="Details" asp-route-id="@item.Id">Ver más</a> 
+                </div>
+            </div>
+
+        }
+
+    </div>
+</div>

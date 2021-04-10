@@ -1,0 +1,54 @@
+﻿@model FinalCoreAsp.Models.AutorDTO
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 class="text-center">Información acerca del autor</h1>
+<hr />
+
+
+<div class="container mb-5">
+    <div class="row">
+
+        <div class="col-md-6">
+            <img src="@Model.Image" class="image-details" alt="...">
+        </div>
+        <div class="col-md-6 descripcion">
+
+            <div class="d-flex flex-row">
+                <p class="mr-2 title">Nombre del autor: </p>
+                <p>@Model.Name</p>
+            </div>
+
+            <div class="d-flex flex-row">
+                <p class="mr-2 title">Descripcion del autor: </p>
+                <p>@Model.Description</p>
+            </div>
+            <div class="d-flex flex-row">
+                <p class="mr-2 title">Libros del autor: </p>
+                @if (Model.Libros.Count == 0)
+                {
+                    <p>Este autor no tiene libros disponibles</p>
+                }
+                <ul>
+                    @foreach (var iten in Model.Libros)
+                    {
+                        <li> @iten.Title</li>
+                    }
+                </ul>
+
+            </div>
+
+            <div class="d-flex flex-row gestion">
+               <a class="mr-2" asp-action="Edit" asp-route-id="@Model.Id">Actualizar Autor</a>
+               <a asp-action="Delete" asp-route-id="@Model.Id">Eliminar Autor</a>
+            </div>
+        </div>
+    </div>
+
+   
+</div>
+
+
